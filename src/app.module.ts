@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProjectsModule } from './projects/projects.module';
 import { SeedModule } from './seed/seed.module';
 import { CertificatesModule } from './certificates/certificates.module';
+import { ContactModule } from './contact/contact.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { CertificatesModule } from './certificates/certificates.module';
     }),
     ProjectsModule,
     SeedModule,
-    CertificatesModule
+    CertificatesModule,
+    ContactModule
   ],
   controllers: [AppController],
   providers: [AppService],
