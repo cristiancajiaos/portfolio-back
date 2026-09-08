@@ -1,9 +1,3 @@
-export interface CertificateData {
-  title: string;
-  place: string;
-  year: number;
-  certificateUrl: string
-}
 export interface ProjectData {
   title: string;
   year: number;
@@ -13,44 +7,17 @@ export interface ProjectData {
   tools: string[];
 }
 
-export const certificates: CertificateData[] = [
-  {
-    "title":"EF SET Certificate - C1 Advanced English Level in reading and listening",
-    "place": "EF",
-    "year": 2025,
-    "certificateUrl":"https://cert.efset.org/en/nwJpA8"
-  },
-  {
-    "title":"Nest: Desarrollo backend escalable con Node",
-    "place": "Udemy",
-    "year":2026,
-    "certificateUrl":"https://www.udemy.com/certificate/UC-07f7b03b-0507-4eb1-aa2a-e65369d16f37"
-  },
-  {
-    "title":"Angular: De cero a experto",
-    "place": "Udemy",
-    "year":2026,
-    "certificateUrl":"https://www.udemy.com/certificate/UC-3b6d2750-5194-471e-8ad4-af1d0eafce36"
-  },
-  {
-    "title":"Curso de Java desde cero a experto",
-    "place": "Edutin Academy",
-    "year":2025,
-    "certificateUrl":"https://app.edutin.com/verify/14875540"
-  },
-  {
-    "title":"Legacy JavaScript Algorithms and Data Structures V7",
-    "place": "FreeCodeCamp",
-    "year":2018,
-    "certificateUrl":"https://www.freecodecamp.org/certification/cristiancajiaos/javascript-algorithms-and-data-structures"
-  },
-  {
-    "title":"Legacy Responsive Web Design V8",
-    "place": "FreeCodeCamp",
-    "year":2018,
-    "certificateUrl":"https://www.freecodecamp.org/certification/cristiancajiaos/responsive-web-design"
-  },
-];
+export interface CertificateData {
+  title: string;
+  place: string;
+  year: number;
+  certificateUrl: string
+}
+
+export interface ContactData {
+  medium: string;
+  mediumUrl: string; 
+}
 
 export const projects: ProjectData[] = [
   {
@@ -119,3 +86,59 @@ export const projects: ProjectData[] = [
     "tools":["HTML5", "CSS3", "JavaScript", "Bootstrap"],
   }
 ];
+
+export const certificates: CertificateData[] = [
+  {
+    "title":"EF SET Certificate - C1 Advanced English Level in reading and listening",
+    "place": "EF",
+    "year": 2025,
+    "certificateUrl":"https://cert.efset.org/en/nwJpA8"
+  },
+  {
+    "title":"Nest: Desarrollo backend escalable con Node",
+    "place": "Udemy",
+    "year":2026,
+    "certificateUrl":"https://www.udemy.com/certificate/UC-07f7b03b-0507-4eb1-aa2a-e65369d16f37"
+  },
+  {
+    "title":"Angular: De cero a experto",
+    "place": "Udemy",
+    "year":2026,
+    "certificateUrl":"https://www.udemy.com/certificate/UC-3b6d2750-5194-471e-8ad4-af1d0eafce36"
+  },
+  {
+    "title":"Curso de Java desde cero a experto",
+    "place": "Edutin Academy",
+    "year":2025,
+    "certificateUrl":"https://app.edutin.com/verify/14875540"
+  },
+  {
+    "title":"Legacy JavaScript Algorithms and Data Structures V7",
+    "place": "FreeCodeCamp",
+    "year":2018,
+    "certificateUrl":"https://www.freecodecamp.org/certification/cristiancajiaos/javascript-algorithms-and-data-structures"
+  },
+  {
+    "title":"Legacy Responsive Web Design V8",
+    "place": "FreeCodeCamp",
+    "year":2018,
+    "certificateUrl":"https://www.freecodecamp.org/certification/cristiancajiaos/responsive-web-design"
+  },
+];
+
+export const contacts: ContactData[] = [
+  {
+    medium: 'Correo',
+    mediumUrl: 'mailto:cristiancajiaos@outlook.com'
+  },
+  {
+    medium: 'LinkedIn',
+    mediumUrl: 'https://www.linkedin.com/in/cristiancajiaos'
+  },
+  {
+    medium: 'GitHub',
+    mediumUrl: 'https://github.com/cristiancajiaos'
+  }
+];
+
+
