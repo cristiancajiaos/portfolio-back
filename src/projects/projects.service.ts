@@ -30,7 +30,7 @@ export class ProjectsService {
   }
 
   findAll() {
-    return `This action returns all projects`;
+    return this.projectRepository.find();
   }
 
   findOne(id: number) {
