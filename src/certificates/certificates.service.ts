@@ -1,11 +1,26 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { CreateCertificateDto } from './dto/create-certificate.dto';
 import { UpdateCertificateDto } from './dto/update-certificate.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Certificate } from './entities/certificate.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class CertificatesService {
-  create(createCertificateDto: CreateCertificateDto) {
-    return 'This action adds a new certificate';
+
+  constructor(
+    @InjectRepository(Certificate)
+    private readonly certificateRepository: Repository<Certificate>
+  ) {}
+
+  async create(createCertificateDto: CreateCertificateDto) {
+    try {
+      let certificate = this.certificateRepository.create(createCertificateDto);
+      await this.certificateRepository.save(certificate);
+      return certificate; 
+    } catch (error) {
+      this.handleDBRequests(error);
+    }
   }
 
   findAll() {
@@ -22,5 +37,13 @@ export class CertificatesService {
 
   remove(id: number) {
     return `This action removes a #${id} certificate`;
+  }
+
+  private handleDBRequests(error) {
+    if (error.code == '23505') {
+      throw new BadRequestException(error.detail);
+    }
+
+    throw new InternalServerErrorException(error);
   }
 }
