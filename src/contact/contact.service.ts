@@ -1,11 +1,25 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Contact } from './entities/contact.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ContactService {
-  create(createContactDto: CreateContactDto) {
-    return 'This action adds a new contact';
+  constructor(
+    @InjectRepository(Contact)
+    private readonly contactRepository: Repository<Contact>
+  ) {}
+
+  async create(createContactDto: CreateContactDto) {
+    try {
+      let contact = this.contactRepository.create(createContactDto);
+      await this.contactRepository.save(contact);
+      return contact;
+    } catch (error) {
+      this.handleDBRequests(error);
+    }
   }
 
   findAll() {
@@ -22,5 +36,13 @@ export class ContactService {
 
   remove(id: number) {
     return `This action removes a #${id} contact`;
+  }
+
+  private handleDBRequests(error) {
+    if (error.code == '23505') {
+      throw new BadRequestException(error.detail);
+    }
+
+    throw new InternalServerErrorException(error);
   }
 }
