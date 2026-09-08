@@ -49,8 +49,12 @@ export class ProjectsService {
     return project;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} project`;
+  async remove(id: string) {
+    let project = this.findOne(id);
+    await this.projectRepository.delete(id);
+    return {
+      message: 'Proyecto eliminado'
+    };
   }
 
   private handleDBRequests(error) {
