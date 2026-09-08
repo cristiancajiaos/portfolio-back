@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProjectsModule } from './projects/projects.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ProjectsModule } from './projects/projects.module';
       synchronize: true 
     }),
     ProjectsModule,
+    SeedModule
   ],
   controllers: [AppController],
   providers: [AppService],
