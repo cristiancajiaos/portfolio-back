@@ -1,10 +1,10 @@
-import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { CreateCertificateDto } from './dto/create-certificate.dto';
 import { UpdateCertificateDto } from './dto/update-certificate.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Certificate } from './entities/certificate.entity';
 import { Repository } from 'typeorm';
-
+import { validate as isUUID } from 'uuid';
 @Injectable()
 export class CertificatesService {
 
@@ -27,8 +27,18 @@ export class CertificatesService {
     return this.certificateRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} certificate`;
+  async findOne(id: string) {
+    if (isUUID(id)) {
+      let certificate: Certificate | null = null;
+      certificate = await this.certificateRepository.findOneBy({id: id});
+      if (!certificate) {
+        throw new NotFoundException(`Certificate with ID ${id} not found`);
+      }
+      return certificate;
+    } else {
+      throw new BadRequestException(`ID given, ${id}, is not an UUID value`);
+    }
+    
   }
 
   update(id: number, updateCertificateDto: UpdateCertificateDto) {
