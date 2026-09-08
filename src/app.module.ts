@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProjectsModule } from './projects/projects.module';
 import { SeedModule } from './seed/seed.module';
+import { CertificatesModule } from './certificates/certificates.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { SeedModule } from './seed/seed.module';
       synchronize: true 
     }),
     ProjectsModule,
-    SeedModule
+    SeedModule,
+    CertificatesModule
   ],
   controllers: [AppController],
   providers: [AppService],
