@@ -49,10 +49,6 @@ export class ProjectsService {
     return project;
   }
 
-  update(id: number, updateProjectDto: UpdateProjectDto) {
-    return `This action updates a #${id} project`;
-  }
-
   remove(id: number) {
     return `This action removes a #${id} project`;
   }
