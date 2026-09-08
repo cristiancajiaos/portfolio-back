@@ -24,7 +24,7 @@ export class CertificatesService {
   }
 
   findAll() {
-    return `This action returns all certificates`;
+    return this.certificateRepository.find();
   }
 
   findOne(id: number) {
