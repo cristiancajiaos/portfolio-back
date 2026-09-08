@@ -22,13 +22,8 @@ export class CertificatesController {
     return this.certificatesService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCertificateDto: UpdateCertificateDto) {
-    return this.certificatesService.update(+id, updateCertificateDto);
-  }
-
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.certificatesService.remove(+id);
+  remove(@Param('id', ParseUUIDPipe) id: string) {
+    return this.certificatesService.remove(id);
   }
 }

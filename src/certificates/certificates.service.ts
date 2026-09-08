@@ -41,12 +41,12 @@ export class CertificatesService {
     
   }
 
-  update(id: number, updateCertificateDto: UpdateCertificateDto) {
-    return `This action updates a #${id} certificate`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} certificate`;
+  async remove(id: string) {
+    let certificate = this.findOne(id);
+    await this.certificateRepository.delete(id);
+    return {
+      message: 'Certificate Deleted'
+    }
   }
 
   private handleDBRequests(error) {
