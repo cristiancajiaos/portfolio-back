@@ -53,7 +53,7 @@ export class ProjectsService {
     let project = this.findOne(id);
     await this.projectRepository.delete(id);
     return {
-      message: 'Proyecto eliminado'
+      message: 'Project deleted'
     };
   }
 
