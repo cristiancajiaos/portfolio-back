@@ -22,7 +22,7 @@ export class ProjectsService {
       let newProject = this.projectRepository.create(createProjectDto);
       newProject = {
         ...newProject,
-        slug: newProject.title.toLowerCase().replace(' ', '-'),
+        slug: newProject.title.toLowerCase().replace(/ /g, '-'),
       };
       await this.projectRepository.save(newProject);
       return newProject;
