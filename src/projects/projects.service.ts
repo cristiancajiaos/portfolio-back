@@ -1,11 +1,32 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Project } from './entities/project.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ProjectsService {
-  create(createProjectDto: CreateProjectDto) {
-    return 'This action adds a new project';
+
+  constructor(
+    @InjectRepository(Project)
+    private readonly projectRepository: Repository<Project>
+  ) {
+
+  }
+  async create(createProjectDto: CreateProjectDto) {
+    try {
+      let newProject = this.projectRepository.create(createProjectDto);
+      newProject = {
+        ...newProject,
+        slug: newProject.title.toLowerCase().replace(' ', '-')
+      };
+      await this.projectRepository.save(newProject);
+      return newProject;
+    } catch (error) {
+      this.handleDBRequests(error);
+    }
+    
   }
 
   findAll() {
@@ -22,5 +43,13 @@ export class ProjectsService {
 
   remove(id: number) {
     return `This action removes a #${id} project`;
+  }
+
+  private handleDBRequests(error) {
+    if (error.code == '23505') {
+      throw new BadRequestException(error.detail);
+    }
+
+    throw new InternalServerErrorException(error);
   }
 }
