@@ -22,7 +22,7 @@ export class ContactService {
     }
   }
 
-  findAll() {
+  async findAll() {
     return this.contactRepository.find();
   }
 
@@ -39,8 +39,15 @@ export class ContactService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} contact`;
+  async remove(id: string) {
+    const contact = this.findOne(id);
+    if (!contact) {
+       throw new NotFoundException(`Contact with ID ${id} not found`); 
+    }
+    await this.contactRepository.delete(id);
+    return {
+      message: `Contact with ID ${id} deleted`
+    }
   }
 
   private handleDBRequests(error) {
