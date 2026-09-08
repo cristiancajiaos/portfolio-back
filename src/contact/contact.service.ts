@@ -1,9 +1,9 @@
-import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { CreateContactDto } from './dto/create-contact.dto';
-import { UpdateContactDto } from './dto/update-contact.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Contact } from './entities/contact.entity';
 import { Repository } from 'typeorm';
+import { validate as isUUID } from 'uuid';
 
 @Injectable()
 export class ContactService {
@@ -23,15 +23,20 @@ export class ContactService {
   }
 
   findAll() {
-    return `This action returns all contact`;
+    return this.contactRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} contact`;
-  }
-
-  update(id: number, updateContactDto: UpdateContactDto) {
-    return `This action updates a #${id} contact`;
+  async findOne(id: string) {
+    let medium: Contact | null = null;
+    if (isUUID(id)) {
+      medium = await this.contactRepository.findOneBy({id: id});
+      if (!medium) {
+        throw new NotFoundException(`Contact with ID ${id} not found`); 
+      }
+      return medium;
+    } else {
+      throw new BadRequestException(`ID given, ${id}, is not a valid ID`);
+    }
   }
 
   remove(id: number) {
