@@ -47,7 +47,7 @@ export const projects: ProjectData[] = [
     imgUrl: 'img/projects/handbrakecalculator.png',
     sampleUrl: 'https://cristiancajiaos.github.io/handbreak-calculator-bs/',
     description:
-      'Aplicación para uso con Handbrake, para calcular el bitrate en kbps de un video',
+      'Aplicación para uso con Handbrake, para calcular el bitrate en kbps de un video.',
     tools: [
       'HTML5',
       'CSS3',
