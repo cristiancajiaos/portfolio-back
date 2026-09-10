@@ -15,7 +15,7 @@ async function bootstrap() {
     })
   )
   app.enableCors({
-    origin: ['http://localhost:4200']
+    origin: ['http://localhost:4200', 'https://portfolio-front-ccs.netlify.app']
   })
   await app.listen(process.env.PORT ?? 3000);
 }
