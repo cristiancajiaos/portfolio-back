@@ -26,7 +26,7 @@ export const projects: ProjectData[] = [
     imgUrl: 'img/projects/findamovie.png',
     sampleUrl: 'https://cristiancajiaos.github.io/find-a-movie/',
     description:
-      'Buscador de películas y de personas que trabajan en la industria cinematográfica. Usa la API de TheMovieDB.',
+      'Buscador de películas y de personas que trabajan en la industria cinematográfica. Para las películas se puede consultar la información básica, su sinopsis, su reparto, y su equipo técnico. Para las personas se puede consultar su biografía, su trabajo como reparto, y su trabajo como miembro del equipo técnico. Usa la API de TheMovieDB.',
     tools: [
       'HTML5',
       'CSS3',
@@ -47,7 +47,7 @@ export const projects: ProjectData[] = [
     imgUrl: 'img/projects/handbrakecalculator.png',
     sampleUrl: 'https://cristiancajiaos.github.io/handbreak-calculator-bs/',
     description:
-      'Aplicación para uso con Handbrake, para calcular el bitrate en kbps de un video.',
+      'Aplicación para ser usada con Handbrake, para calcular el bitrate en kbps de un video en base a la duración de un video, el peso objetivo, y la calidad de audio del video.',
     tools: [
       'HTML5',
       'CSS3',
@@ -65,7 +65,7 @@ export const projects: ProjectData[] = [
     imgUrl: 'img/projects/enestoestuve.png',
     sampleUrl: 'https://cristiancajiaos.github.io/enestoestuveapp/',
     description:
-      'Aplicación creada como diseño ideal del blog personal "En esto estuve", creado en el año 2010 en Tumblr. El propósito de este aplicación es hacer una demostración general del diseño del blog.',
+      'Aplicación creada como diseño ideal del blog personal "En esto estuve", creado en el año 2020 para la plataforma Tumblr. El propósito de este aplicación es hacer una demostración general del diseño del blog.',
     tools: [
       'HTML5',
       'CSS3',
