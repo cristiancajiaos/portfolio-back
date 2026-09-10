@@ -13,11 +13,12 @@ import { ContactModule } from './contact/contact.module';
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      port: +process.env.PORT!,
-      host: process.env.HOST,
+      port: +process.env.DB_PORT!,
+      host: process.env.DB_HOST,
       database: process.env.DB_NAME,
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
+      ssl: true,
       autoLoadEntities: true,
       synchronize: true 
     }),
