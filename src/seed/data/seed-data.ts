@@ -26,7 +26,7 @@ export const projects: ProjectData[] = [
     imgUrl: 'img/projects/findamovie.png',
     sampleUrl: 'https://cristiancajiaos.github.io/find-a-movie/',
     description:
-      'Buscador de películas y de personas que trabajan en la industria cinematográfica. Para las películas se puede consultar la información básica, su sinopsis, su reparto, y su equipo técnico. Para las personas se puede consultar su biografía, su trabajo como reparto, y su trabajo como miembro del equipo técnico. Usa la API de TheMovieDB.',
+      'Buscador de películas y de personas que trabajan en la industria cinematográfica. Para las películas se puede consultar la información básica, su sinopsis, su reparto, y su equipo técnico. Para las personas se puede consultar su biografía, su trabajo como reparto, y su trabajo como miembro del equipo técnico. Usa la API de TheMovieDB. Solo en inglés.',
     tools: [
       'HTML5',
       'CSS3',
